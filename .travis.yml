@@ -20,3 +20,15 @@ after_success:
   - docker push superiqbal7/multi-nginx
   - docker push superiqbal7/multi-worker
   - docker push superiqbal7/multi-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'multi-docker'
+  env: 'MultiDocker-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-126930600597'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KE
